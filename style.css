@@ -779,6 +779,7 @@ textarea:focus-visible {
     min-height: 300px;
     padding: 0;
     margin-bottom: 2.1rem;
+    margin-top: 1rem;
   }
 
   .hero__gallery-track {
@@ -1335,7 +1336,7 @@ textarea:focus-visible {
 
 .highlights__heading {
   max-width: var(--container-max);
-  margin: 0 auto clamp(1.75rem, 3.5vw, 2.75rem);
+  margin: 3.67rem auto clamp(1.75rem, 3.5vw, 2.75rem);
   padding-inline: var(--gutter);
   text-align: center;
   font-family: var(--font-display);
@@ -1486,7 +1487,7 @@ textarea:focus-visible {
    13. Footer
    ===================================================================== */
 .site-footer {
-  background: #14082f;
+  background: linear-gradient(to bottom, #3F186A, #000E38);
   color: var(--color-white);
   padding-block: clamp(2rem, 4vw, 3rem) 0;
 }
@@ -1645,7 +1646,7 @@ textarea:focus-visible {
     font-size: clamp(1.5rem, 6.5vw, 2.2rem);
     white-space: normal;
     line-height: 1.15;
-    margin-top: 0.8rem;
+    margin-top: 1.2rem;
   }
 
   .hero__subheading {
@@ -1657,12 +1658,36 @@ textarea:focus-visible {
   .hero__details {
     padding: 0.5rem 0.75rem;
     font-size: clamp(0.6rem, 2vw, 0.75rem);
+    margin-bottom: 1.2rem;
   }
 
   .hero__gallery {
-    height: 320px;
-    min-height: 240px;
+    height: 400px;
+    min-height: 320px;
     margin-bottom: 3rem;
+    margin-top: 1.2rem;
+    position: relative;
+  }
+
+  .hero__gallery::before,
+  .hero__gallery::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .hero__gallery::before {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(28, 15, 61, 0.8), transparent);
+  }
+
+  .hero__gallery::after {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(28, 15, 61, 0.8), transparent);
   }
 
   .hero__gallery-track {
@@ -1797,6 +1822,7 @@ textarea:focus-visible {
   /* Highlights */
   .highlights__heading {
     font-size: clamp(1.2rem, 5vw, 1.6rem);
+    margin-top: 2.1rem;
   }
 
   .highlights__card {
@@ -1890,12 +1916,36 @@ textarea:focus-visible {
   .hero__details {
     padding: 0.4rem 0.6rem;
     font-size: clamp(0.55rem, 1.8vw, 0.7rem);
+    margin-bottom: 1rem;
   }
 
   .hero__gallery {
-    height: 280px;
-    min-height: 200px;
+    height: 360px;
+    min-height: 280px;
     margin-bottom: 3rem;
+    margin-top: 1rem;
+    position: relative;
+  }
+
+  .hero__gallery::before,
+  .hero__gallery::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .hero__gallery::before {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(28, 15, 61, 0.8), transparent);
+  }
+
+  .hero__gallery::after {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(28, 15, 61, 0.8), transparent);
   }
 
   .hero__gallery-track {
