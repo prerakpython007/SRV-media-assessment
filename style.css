@@ -382,13 +382,13 @@ textarea:focus-visible {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   background: var(--color-cream);
   color: var(--color-cream-text);
   border-radius: var(--radius-pill);
-  padding: 0.8rem 1.2rem;
+  padding: 0.6rem 1rem;
   margin: 0;
-  font-size: clamp(0.85rem, 1.1vw, 1.1rem);
+  font-size: clamp(0.75rem, 0.95vw, 0.95rem);
   line-height: 1.35;
 }
 
@@ -621,32 +621,88 @@ textarea:focus-visible {
     height: clamp(756px, 94.5vh, 1050px);
   }
 
+  /* FIX: the gallery grid previously kept its desktop 220px column floor
+     here, which forced the 2-col tablet layout to overflow sideways.
+     Give the columns a smaller, still-legible floor so they can actually
+     fit inside the narrower "gallery" grid area. */
+  .hero__gallery-track {
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+  }
+
+  .hero__gallery-col {
+    min-width: 140px;
+  }
+
   .hero__enquiry {
     grid-area: enquiry;
     max-width: 38rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 @media (max-width: 720px) {
   :root {
-    --logo-height: 80px;
+    --logo-height: 50px;
+    --gutter: 1rem;
+  }
+
+  html {
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .site-header {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .site-header__inner {
-    min-height: 68px;
+    min-height: 50px;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .site-header__logo {
+    max-width: 60%;
   }
 
   .site-header__logo img {
-    margin-bottom: calc(var(--logo-height) * -0.3);
+    margin-bottom: 0;
+    height: 50px;
+    max-width: 100%;
   }
 
-  .cta-btn__label {
-    padding: 0.75rem 1.1rem;
-    font-size: 0.8rem;
+  .site-header__cta {
+    display: flex;
+  }
+
+  .site-header__cta .cta-btn__label {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.7rem;
+  }
+
+  .site-header__cta .cta-btn__icon {
+    width: 30px;
   }
 
   .hero {
-    padding-top: 3.5rem;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    box-sizing: border-box;
   }
 
   .hero__inner {
@@ -655,31 +711,131 @@ textarea:focus-visible {
       "content"
       "gallery"
       "enquiry";
+    gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero__content {
+    grid-area: content;
+    max-width: 100%;
+    text-align: center;
+    padding: 0;
   }
 
   .hero__heading {
-    font-size: clamp(1.85rem, 8vw, 2.4rem);
+    font-size: clamp(1.4rem, 6vw, 1.8rem);
     white-space: normal;
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero__subheading {
+    font-size: clamp(0.8rem, 2.8vw, 1rem);
+    margin-bottom: 0.75rem;
   }
 
   .hero__details {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 0.2rem;
     border-radius: var(--radius-md);
-    padding: 1rem 1.4rem;
+    padding: 0.6rem 0.85rem;
+    font-size: clamp(0.65rem, 2.2vw, 0.8rem);
+    margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
   }
 
   .hero__details-divider {
     display: none;
   }
 
+  .hero__details-item {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
   .hero__gallery {
-    height: 588px;
+    grid-area: gallery;
+    height: 280px;
+    min-height: 220px;
+    padding: 0;
+  }
+
+  .hero__gallery-track {
+    padding-inline: 0.25rem;
+    /* FIX: at this width the fixed column floor no longer fits at all —
+       let the 3 columns split the available width freely instead of
+       forcing an overflow that got hidden (and clipped) by the section's
+       own overflow:hidden. */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+
+  .hero__gallery-col {
+    min-width: 0;
+  }
+
+  .hero__gallery-img {
+    width: 90%;
+    /* shorter aspect ratio so images aren't cropped too aggressively
+       inside the much shorter mobile gallery height */
+    aspect-ratio: 3 / 5;
   }
 
   .hero__enquiry {
-    max-width: none;
+    grid-area: enquiry;
+    max-width: 90%;
+    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__enquiry-title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .enquiry-form {
+    gap: 0.75rem;
+  }
+
+  .enquiry-form__input {
+    padding: 0.75rem 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  .enquiry-form__submit {
+    width: 100%;
+    padding: 0;
+  }
+
+  .enquiry-form__submit .cta-btn__label {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .enquiry-form__submit .cta-btn__icon {
+    width: 36px;
+  }
+
+  /* Stats/Badge section on mobile */
+  .stats {
+    padding-block: 1.5rem;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+
+  .stats__badge-wrap {
+    padding: 1rem;
+  }
+
+  .stats__badge-wrap img {
+    width: 100%;
   }
 }
 
@@ -787,7 +943,7 @@ textarea:focus-visible {
 
 .appointment__inner {
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
+  grid-template-columns: 1.2fr 1fr;
   align-items: stretch;
   min-height: clamp(672px, 77vw, 952px);
   position: relative;
@@ -801,8 +957,8 @@ textarea:focus-visible {
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
-  padding: clamp(2rem, 4vw, 3.5rem) calc(var(--gutter) + 10%) var(--gutter) var(--gutter);
-  background: linear-gradient(90deg, #f3ecfb 0%, #e9d9f5 15%, #dcc3ee 45%, transparent 100%);
+  padding: clamp(2rem, 4vw, 3.5rem) 0 var(--gutter) var(--gutter);
+  background: linear-gradient(90deg, #f3ecfb 0%, #e9d9f5 10%, #dcc3ee 75%, transparent 100%);
 }
 
 .appointment__eyebrow {
@@ -1116,14 +1272,25 @@ textarea:focus-visible {
 }
 
 @media (max-width: 720px) {
+  .schools {
+    padding-block: 0 clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .schools__heading {
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+    margin-bottom: 1rem;
+  }
+
   .schools__ticker-toggle {
-    top: -2.2rem;
+    top: -2rem;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
   }
 
   .schools__logo {
-    width: clamp(440px, 110vw, 660px);
-    height: 275px;
-    padding: 0.9rem 1.1rem;
+    width: clamp(280px, 70vw, 400px);
+    height: clamp(160px, 40vw, 220px);
+    padding: 0.6rem 0.8rem;
   }
 }
 
@@ -1177,10 +1344,14 @@ textarea:focus-visible {
 .highlights__card {
   flex: 0 0 auto;
   scroll-snap-align: start;
-  width: clamp(220px, 21vw, 300px);
+  width: clamp(260px, 25vw, 360px);
+  min-height: clamp(240px, 24vw, 340px);
   background: linear-gradient(160deg, #ede4fb 0%, #ddc7f6 100%);
   border-radius: var(--radius-md);
-  padding: clamp(1.4rem, 2vw, 1.9rem);
+  padding: clamp(1.6rem, 2.5vw, 2.2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .highlights__icon {
@@ -1189,7 +1360,6 @@ textarea:focus-visible {
   width: clamp(46px, 4.5vw, 58px);
   height: clamp(46px, 4.5vw, 58px);
   color: var(--color-purple-end);
-  margin-bottom: 1rem;
 }
 
 .highlights__icon img {
@@ -1202,18 +1372,24 @@ textarea:focus-visible {
   display: none;
 }
 
+.highlights__card:nth-child(5) .highlights__icon {
+  width: clamp(36px, 3.5vw, 48px);
+  height: clamp(36px, 3.5vw, 48px);
+}
+
 .highlights__title {
   margin: 0 0 0.5rem;
+  margin-top: auto;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.4rem;
   line-height: 1.3;
   color: var(--color-ink);
 }
 
 .highlights__desc {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 1rem;
   line-height: 1.45;
   color: var(--color-purple-mid);
 }
@@ -1287,7 +1463,7 @@ textarea:focus-visible {
 .site-footer {
   background: #14082f;
   color: var(--color-white);
-  padding-block: clamp(2rem, 4vw, 3rem) 1.25rem;
+  padding-block: clamp(2rem, 4vw, 3rem) 0;
 }
 
 .site-footer__inner {
@@ -1316,17 +1492,18 @@ textarea:focus-visible {
   gap: 0.7rem;
   flex: 1 1 200px;
   min-width: 180px;
+  margin-bottom: 1.5rem;
 }
 
-.site-footer__ZSsscon {
+.site-footer__icon {
   display: grid;
   place-items: center;
   flex-shrink: 0;
   width: 34px;
   height: 34px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--color-cream);
+  background: #dcc3ee;
+  color: var(--color-purple-end);
 }
 
 .site-footer__label {
@@ -1372,8 +1549,8 @@ textarea:focus-visible {
   width: 34px;
   height: 34px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--color-white);
+  background: #dcc3ee;
+  color: var(--color-purple-end);
   text-decoration: none;
   transition: background-color 0.2s var(--ease);
 }
@@ -1384,12 +1561,12 @@ textarea:focus-visible {
 }
 
 .site-footer__copyright {
-  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
-  padding-top: 1.1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin: 0;
+  padding: 1rem var(--gutter);
+  background: var(--color-white);
   text-align: center;
   font-size: 0.82rem;
-  color: var(--color-white);
+  color: var(--color-ink);
 }
 
 @media (max-width: 720px) {
@@ -1399,5 +1576,315 @@ textarea:focus-visible {
 
   .site-footer__col--social {
     align-items: flex-start;
+  }
+
+  .site-footer__brand {
+    display: none;
+  }
+
+  .site-footer__col {
+    flex: 1 1 100%;
+    margin-bottom: 1rem;
+  }
+
+  .site-footer__ZSsscon,
+  .site-footer__icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Mobile responsive - 480px and below */
+@media (max-width: 480px) {
+  :root {
+    --gutter: 0.75rem;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Hero section */
+  .hero {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero__inner {
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .hero__heading {
+    font-size: clamp(1.2rem, 5.5vw, 1.6rem);
+    white-space: normal;
+    line-height: 1.15;
+  }
+
+  .hero__subheading {
+    font-size: clamp(0.7rem, 2.8vw, 0.9rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero__details {
+    padding: 0.5rem 0.75rem;
+    font-size: clamp(0.6rem, 2vw, 0.75rem);
+  }
+
+  .hero__gallery {
+    height: 220px;
+    min-height: 160px;
+  }
+
+  .hero__gallery-track {
+    padding-inline: 0.15rem;
+    /* FIX: keep the freed-up grid from the 720px block; only tighten
+       the gap further for very small phones. */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.3rem;
+  }
+
+  .hero__gallery-col {
+    min-width: 0;
+  }
+
+  .hero__gallery-img {
+    width: 92%;
+    aspect-ratio: 3 / 5;
+  }
+
+  .hero__enquiry {
+    max-width: 85%;
+    padding: 0.75rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__enquiry-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .enquiry-form {
+    gap: 0.5rem;
+  }
+
+  .enquiry-form__input {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .enquiry-form__submit .cta-btn__label {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .enquiry-form__submit .cta-btn__icon {
+    width: 30px;
+  }
+
+  /* Stats/Badge */
+  .stats__badge-wrap img {
+    width: 100%;
+  }
+
+  /* Categories */
+  .categories__heading {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+
+  .categories__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .categories__card {
+    aspect-ratio: 1 / 1;
+  }
+
+  .categories__overlay {
+    padding: 0.75rem;
+  }
+
+  .categories__title {
+    font-size: 0.85rem;
+  }
+
+  .categories__desc {
+    font-size: 0.7rem;
+  }
+
+  /* Appointment */
+  .appointment__inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .appointment__content {
+    padding: 1.5rem var(--gutter);
+  }
+
+  .appointment__heading {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+  }
+
+  .appointment__eyebrow {
+    font-size: clamp(0.85rem, 3vw, 1rem);
+  }
+
+  .appointment__media {
+    min-height: 200px;
+  }
+
+  /* Schools */
+  .schools__heading {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+
+  .schools__logo {
+    width: clamp(280px, 80vw, 400px);
+    height: clamp(160px, 45vw, 220px);
+    padding: 0.6rem 0.8rem;
+  }
+
+  /* Highlights */
+  .highlights__heading {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+
+  .highlights__card {
+    width: clamp(180px, 70vw, 240px);
+    min-height: 200px;
+    padding: 1rem;
+  }
+
+  .highlights__title {
+    font-size: 1rem;
+  }
+
+  .highlights__desc {
+    font-size: 0.8rem;
+  }
+
+  .highlights__icon {
+    width: clamp(36px, 10vw, 48px);
+    height: clamp(36px, 10vw, 48px);
+  }
+
+  .highlights__nav {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding-block: 1.5rem 0;
+  }
+
+  .site-footer__inner {
+    padding-inline: var(--gutter);
+    gap: 1rem;
+  }
+
+  .site-footer__text {
+    font-size: 0.8rem;
+  }
+
+  .site-footer__label {
+    font-size: 0.85rem;
+  }
+
+  .site-footer__social {
+    gap: 0.4rem;
+  }
+
+  .site-footer__social-link {
+    width: 32px;
+    height: 32px;
+  }
+
+  .site-footer__copyright {
+    padding: 0.75rem var(--gutter);
+    font-size: 0.75rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  :root {
+    --gutter: 0.5rem;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  .hero {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero__inner {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .hero__heading {
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+  }
+
+  .hero__subheading {
+    font-size: clamp(0.65rem, 2.5vw, 0.8rem);
+  }
+
+  .hero__details {
+    padding: 0.4rem 0.6rem;
+    font-size: clamp(0.55rem, 1.8vw, 0.7rem);
+  }
+
+  .hero__gallery {
+    height: 180px;
+    min-height: 140px;
+  }
+
+  .hero__gallery-track {
+    gap: 0.25rem;
+  }
+
+  .hero__enquiry {
+    max-width: 85%;
+    padding: 0.6rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__enquiry-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .schools__logo {
+    width: clamp(200px, 55vw, 280px);
+    height: clamp(120px, 32vw, 160px);
+    padding: 0.5rem 0.6rem;
+  }
+
+  .categories__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .categories__card {
+    aspect-ratio: 4 / 3;
+  }
+
+  .highlights__card {
+    width: clamp(160px, 75vw, 200px);
+    min-height: 180px;
+  }
+
+  .appointment__content {
+    padding: 1rem;
   }
 }
