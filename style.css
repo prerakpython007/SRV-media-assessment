@@ -169,7 +169,7 @@ textarea:focus-visible {
 .cta-btn__label {
   display: flex;
   align-items: center;
-  padding: 0.95rem 1rem;
+  padding: 1.2rem 1.6rem;
   color: var(--color-ink);
   text-transform: uppercase;
   transition: color 0.25s var(--ease);
@@ -179,20 +179,22 @@ textarea:focus-visible {
 
 .cta-btn__arrow {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   margin: auto;
   transition: opacity 0.2s var(--ease), transform 0.25s var(--ease);
 }
 
 .cta-btn__arrow--diagonal {
   opacity: 1;
-  /* tilt arrow to face top-right in default state */
-  transform: rotate(-45deg) scale(1);
+  transform: rotate(0deg);
 }
 
 .cta-btn__arrow--horizontal {
   opacity: 0;
-  transform: rotate(-45deg) scale(0.7);
+  transform: rotate(0deg);
 }
 
 /* --- Primary CTA (Register Now): default two-tone -> hover solid navy --- */
@@ -218,12 +220,12 @@ textarea:focus-visible {
 
 .cta-btn--primary:hover .cta-btn__arrow--diagonal {
   opacity: 0;
-  transform: rotate(45deg) scale(0.7);
+  transform: rotate(-45deg);
 }
 
 .cta-btn--primary:hover .cta-btn__arrow--horizontal {
   opacity: 1;
-  transform: rotate(0deg) scale(1);
+  transform: rotate(0deg);
 }
 
 /* reduce rounding when active */
@@ -260,21 +262,21 @@ textarea:focus-visible {
 
 .cta-btn--outline:hover .cta-btn__icon,
 .cta-btn--outline:focus-visible .cta-btn__icon {
-  background: var(--color-ink);
-  color: var(--color-white);
-  border-left-color: var(--color-ink);
+  background: var(--color-white);
+  color: var(--color-ink);
+  border-left-color: var(--color-white);
 }
 
 .cta-btn--outline:hover .cta-btn__arrow--diagonal,
 .cta-btn--outline:focus-visible .cta-btn__arrow--diagonal {
   opacity: 0;
-  transform: rotate(45deg) scale(0.7);
+  transform: rotate(0deg);
 }
 
 .cta-btn--outline:hover .cta-btn__arrow--horizontal,
 .cta-btn--outline:focus-visible .cta-btn__arrow--horizontal {
   opacity: 1;
-  transform: rotate(0deg) scale(1);
+  transform: rotate(0deg);
 }
 
 /* ---------------------------------------------------------------------
@@ -329,10 +331,9 @@ textarea:focus-visible {
    --------------------------------------------------------------------- */
 .hero {
   background: linear-gradient(
-    135deg,
-    var(--color-purple-start) 0%,
-    var(--color-purple-mid) 55%,
-    var(--color-purple-end) 100%
+    90deg,
+    #000E38 0%,
+    #3F186A 100%
   );
   color: var(--color-white);
   padding-block: 0;
@@ -525,6 +526,8 @@ textarea:focus-visible {
   border-radius: 6px;
   padding: clamp(1.75rem, 2.6vw, 2.6rem);
   backdrop-filter: blur(6px);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero__enquiry-title {
@@ -589,7 +592,7 @@ textarea:focus-visible {
 /* Submit: full width of the card, same height/weight as the nav CTA
    so it reads as an equally-important action inside the bigger card. */
 .enquiry-form__submit {
-  width: 80%;
+  width: 60%;
   justify-content: center;
   margin-top: 0.35rem;
 }
@@ -743,7 +746,7 @@ textarea:focus-visible {
     gap: 0.5rem;
     border-radius: var(--radius-md);
     padding: 0.5rem 0.75rem;
-    font-size: clamp(0.55rem, 1.8vw, 0.7rem);
+    font-size: clamp(0.72rem, 2.34vw, 0.91rem);
     margin: 0 auto;
     max-width: 100%;
     width: 100%;
@@ -770,8 +773,8 @@ textarea:focus-visible {
 
   .hero__gallery {
     grid-area: gallery;
-    height: 280px;
-    min-height: 220px;
+    height: 380px;
+    min-height: 300px;
     padding: 0;
   }
 
@@ -984,9 +987,10 @@ textarea:focus-visible {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+  font-size: clamp(2.85rem, 4.8vw, 4.2rem);
   line-height: 1.15;
   color: var(--color-ink);
+  max-width: 100%;
 }
 
 .appointment__subheading {
@@ -1000,6 +1004,12 @@ textarea:focus-visible {
 
 .appointment__cta {
   align-self: flex-start;
+  background: transparent;
+  border: 2px solid var(--color-ink);
+}
+
+.appointment__cta .cta-btn__icon {
+  background: var(--color-ink);
 }
 
 .appointment__media {
@@ -1643,8 +1653,8 @@ textarea:focus-visible {
   }
 
   .hero__gallery {
-    height: 220px;
-    min-height: 160px;
+    height: 320px;
+    min-height: 240px;
   }
 
   .hero__gallery-track {
@@ -1669,6 +1679,8 @@ textarea:focus-visible {
     padding: 0.85rem 1.25rem;
     margin-left: auto;
     margin-right: auto;
+    box-sizing: border-box;
+    width: 100%;
   }
 
   .hero__enquiry-title {
@@ -1695,8 +1707,17 @@ textarea:focus-visible {
   }
 
   /* Stats/Badge */
+  .stats__badge-wrap {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+  }
+
   .stats__badge-wrap img {
-    width: 100%;
+    width: auto;
+    max-width: none;
+    height: auto;
+    min-width: 180%;
   }
 
   /* Categories */
@@ -1733,6 +1754,7 @@ textarea:focus-visible {
 
   .appointment__content {
     padding: 1.5rem var(--gutter);
+    background: linear-gradient(90deg, #f3ecfb 0%, #e9d9f5 10%, #dcc3ee 50%, transparent 100%);
   }
 
   .appointment__heading {
@@ -1855,8 +1877,8 @@ textarea:focus-visible {
   }
 
   .hero__gallery {
-    height: 180px;
-    min-height: 140px;
+    height: 280px;
+    min-height: 200px;
   }
 
   .hero__gallery-track {
@@ -1868,6 +1890,8 @@ textarea:focus-visible {
     padding: 0.75rem 1rem;
     margin-left: auto;
     margin-right: auto;
+    box-sizing: border-box;
+    width: 100%;
   }
 
   .hero__enquiry-title {
@@ -1896,5 +1920,6 @@ textarea:focus-visible {
 
   .appointment__content {
     padding: 1rem;
+    background: linear-gradient(90deg, #f3ecfb 0%, #e9d9f5 10%, #dcc3ee 45%, transparent 100%);
   }
 }
