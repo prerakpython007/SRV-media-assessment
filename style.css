@@ -347,14 +347,14 @@ textarea:focus-visible {
   margin-inline: auto;
   padding-inline: clamp(0.5rem, 2vw, 2rem);
   display: grid;
-  grid-template-columns: 0.85fr 1fr 0.9fr;
+  grid-template-columns: 1fr 1fr 0.9fr;
   align-items: center;
   gap: 0;
 }
 
 /* --- Left: content --- */
 .hero__content {
-  max-width: 22rem;
+  max-width: 28rem;
   padding-left: 0;
   margin-left: -0.5rem;
 }
@@ -376,7 +376,7 @@ textarea:focus-visible {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin: 0 0 2.25rem;
-  color: var(--color-white);
+  color: var(--color-cream);
 }
 
 .hero__details {
@@ -389,7 +389,7 @@ textarea:focus-visible {
   border-radius: var(--radius-pill);
   padding: 0.6rem 1rem;
   margin: 0;
-  font-size: clamp(0.75rem, 0.95vw, 0.95rem);
+  font-size: clamp(1.05rem, 1.33vw, 1.33rem);
   line-height: 1.35;
 }
 
@@ -728,15 +728,17 @@ textarea:focus-visible {
   }
 
   .hero__heading {
-    font-size: clamp(1.4rem, 6vw, 1.8rem);
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
     white-space: normal;
     line-height: 1.2;
     margin-bottom: 0.3rem;
+    margin-top: 0.5rem;
   }
 
   .hero__subheading {
-    font-size: clamp(0.8rem, 2.8vw, 1rem);
-    margin-bottom: 0.75rem;
+    font-size: clamp(0.9rem, 3.2vw, 1.15rem);
+    margin-top: 0.5rem;
+    margin-bottom: 2.2rem;
   }
 
   .hero__details {
@@ -746,7 +748,7 @@ textarea:focus-visible {
     gap: 0.5rem;
     border-radius: var(--radius-md);
     padding: 0.5rem 0.75rem;
-    font-size: clamp(0.72rem, 2.34vw, 0.91rem);
+    font-size: clamp(1rem, 3.3vw, 1.27rem);
     margin: 0 auto;
     max-width: 100%;
     width: 100%;
@@ -776,6 +778,7 @@ textarea:focus-visible {
     height: 380px;
     min-height: 300px;
     padding: 0;
+    margin-bottom: 2.1rem;
   }
 
   .hero__gallery-track {
@@ -837,7 +840,7 @@ textarea:focus-visible {
 
   /* Stats/Badge section on mobile */
   .stats {
-    padding-block: 1.5rem;
+    padding-block: 2rem;
     width: 100%;
     max-width: 100vw;
     overflow: hidden;
@@ -845,6 +848,8 @@ textarea:focus-visible {
 
   .stats__badge-wrap {
     padding: 1rem;
+    margin-top: 0.8rem;
+    margin-bottom: 2.5rem;
   }
 
   .stats__badge-wrap img {
@@ -1092,7 +1097,7 @@ textarea:focus-visible {
 .stats__badge-wrap {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 2rem var(--gutter);
+  padding: 2.5rem calc(var(--gutter) + 1rem);
   display: flex;
   justify-content: center;
 }
@@ -1637,14 +1642,16 @@ textarea:focus-visible {
   }
 
   .hero__heading {
-    font-size: clamp(1.2rem, 5.5vw, 1.6rem);
+    font-size: clamp(1.5rem, 6.5vw, 2.2rem);
     white-space: normal;
     line-height: 1.15;
+    margin-top: 0.8rem;
   }
 
   .hero__subheading {
-    font-size: clamp(0.7rem, 2.8vw, 0.9rem);
-    margin-bottom: 0.5rem;
+    font-size: clamp(1rem, 3.5vw, 1.35rem);
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
   }
 
   .hero__details {
@@ -1655,6 +1662,7 @@ textarea:focus-visible {
   .hero__gallery {
     height: 320px;
     min-height: 240px;
+    margin-bottom: 3rem;
   }
 
   .hero__gallery-track {
@@ -1707,10 +1715,16 @@ textarea:focus-visible {
   }
 
   /* Stats/Badge */
+  .stats {
+    padding-bottom: 2.2rem;
+  }
+
   .stats__badge-wrap {
     overflow-x: auto;
     justify-content: flex-start;
     padding-bottom: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
   }
 
   .stats__badge-wrap img {
@@ -1864,11 +1878,13 @@ textarea:focus-visible {
   }
 
   .hero__heading {
-    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+    font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+    margin-top: 0.8rem;
   }
 
   .hero__subheading {
-    font-size: clamp(0.65rem, 2.5vw, 0.8rem);
+    font-size: clamp(0.9rem, 3.5vw, 1.15rem);
+    margin-top: 0.8rem;
   }
 
   .hero__details {
@@ -1879,6 +1895,7 @@ textarea:focus-visible {
   .hero__gallery {
     height: 280px;
     min-height: 200px;
+    margin-bottom: 3rem;
   }
 
   .hero__gallery-track {
