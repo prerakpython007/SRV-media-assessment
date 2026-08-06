@@ -737,25 +737,35 @@ textarea:focus-visible {
   }
 
   .hero__details {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 0.2rem;
+    justify-content: center;
+    gap: 0.5rem;
     border-radius: var(--radius-md);
-    padding: 0.6rem 0.85rem;
-    font-size: clamp(0.65rem, 2.2vw, 0.8rem);
+    padding: 0.5rem 0.75rem;
+    font-size: clamp(0.55rem, 1.8vw, 0.7rem);
     margin: 0 auto;
     max-width: 100%;
     width: 100%;
+    flex-wrap: wrap;
   }
 
   .hero__details-divider {
-    display: none;
+    display: inline;
+    width: 1px;
+    align-self: stretch;
+    background: rgba(58, 31, 92, 0.35);
+    height: auto;
   }
 
   .hero__details-item {
-    display: block;
-    width: 100%;
+    display: inline;
+    width: auto;
     text-align: center;
+  }
+
+  .hero__details-item strong {
+    display: inline;
   }
 
   .hero__gallery {
@@ -788,8 +798,8 @@ textarea:focus-visible {
 
   .hero__enquiry {
     grid-area: enquiry;
-    max-width: 90%;
-    padding: 1rem;
+    max-width: 100%;
+    padding: 1rem 1.5rem;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1655,14 +1665,14 @@ textarea:focus-visible {
   }
 
   .hero__enquiry {
-    max-width: 85%;
-    padding: 0.75rem;
+    max-width: 100%;
+    padding: 0.85rem 1.25rem;
     margin-left: auto;
     margin-right: auto;
   }
 
   .hero__enquiry-title {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     margin-bottom: 0.75rem;
   }
 
@@ -1854,8 +1864,8 @@ textarea:focus-visible {
   }
 
   .hero__enquiry {
-    max-width: 85%;
-    padding: 0.6rem;
+    max-width: 100%;
+    padding: 0.75rem 1rem;
     margin-left: auto;
     margin-right: auto;
   }
